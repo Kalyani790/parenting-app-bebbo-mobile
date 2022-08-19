@@ -309,7 +309,7 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           'uuid ="' + activeChild.uuid + '"',
         );
         if (updateresult?.length > 0) {
-          const deleteresultnew = deleteresult
+          const deleteresultnew = await deleteresult
           activeChild.measures = deleteresultnew;
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
