@@ -303,13 +303,15 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: "",
           measurementPlace: existingMeasure.measurementPlace,
         };
+        activeChild.measures=[];
+        
         const updateresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
         );
         if (updateresult?.length > 0) {
-          activeChild.measures = deleteresult;
+         activeChild.measures = updateresult;
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
@@ -320,6 +322,7 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
       } else {
         // delete measure
         //delete measure obj
+        activeChild.measures=[];
         const deleteresult = await userRealmCommon.deleteChildMeasures<ChildEntity>(
           ChildEntitySchema,
           existingMeasure,
@@ -351,6 +354,7 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: "",
           measurementPlace: existingMeasure.measurementPlace,
         };
+        activeChild.measures=[];
         const updateresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
@@ -368,6 +372,7 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
       } else {
         // delete measure
         //delete measure obj
+        activeChild.measures=[];
         const deleteresult = await userRealmCommon.deleteChildMeasures<ChildEntity>(
           ChildEntitySchema,
           existingMeasure,
@@ -411,6 +416,7 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
+        activeChild.measures=[];
         const updateresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
@@ -435,6 +441,8 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: existingMeasure.doctorComment,
           measurementPlace: existingMeasure.measurementPlace,
         };
+        activeChild.measures=[];
+      
         const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValuesForVaccineMeasured,
@@ -460,6 +468,8 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
+        activeChild.measures=[];
+      
         const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
@@ -491,6 +501,8 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
+        activeChild.measures=[];
+      
         const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
@@ -519,6 +531,8 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
+        activeChild.measures=[];
+      
         const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
