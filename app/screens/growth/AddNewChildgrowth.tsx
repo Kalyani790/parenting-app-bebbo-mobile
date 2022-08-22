@@ -308,16 +308,16 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
         );
-        if (updateresult?.length > 0) {
-          activeChild.measures = updateresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
-          dispatch(setActiveChildData(activeChild));
-          const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
-          dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
-          setModalVisible(false);
-        }
+        await Promise.all([updateresult]).then((updateresult:any)=>{
+          if (updateresult?.length > 0) {
+            activeChild.measures = updateresult;
+            dispatch(setActiveChildData(activeChild));
+            const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
+            dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
+            setModalVisible(false);
+          }
+        })
+       
         navigation.goBack();
 
       } else {
@@ -328,15 +328,15 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           existingMeasure,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([deleteresult]).then((deleteresult:any)=>{   
         if (deleteresult) {
           activeChild.measures = deleteresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           setModalVisible(false);
         }
         navigation.goBack();
+      })
+       
       }
     } else {
       const existingMeasure = getMeasuresForDate(DateTime.fromJSDate(new Date(measureDate?.toMillis())), activeChild)
@@ -362,18 +362,17 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([updateresult]).then((updateresult:any)=>{   
+     
         if (updateresult?.length > 0) {
           activeChild.measures = updateresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
           setModalVisible(false);
         }
         navigation.goBack();
-
+      });
       } else {
         // delete measure
         //delete measure obj
@@ -382,15 +381,15 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           existingMeasure,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([deleteresult]).then((deleteresult:any)=>{   
+    
         if (deleteresult) {
           activeChild.measures = deleteresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           setModalVisible(false);
         }
         navigation.goBack();
+      });
       }
     }
 
@@ -428,16 +427,16 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([updateresult]).then((updateresult:any)=>{   
+    
         if (updateresult?.length > 0) {
           activeChild.measures = updateresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
           setModalVisible(false);
         }
+        });
         const growthValuesForVaccineMeasured = {
           uuid: existingMeasure.uuid,
           isChildMeasured: false,
@@ -455,16 +454,16 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           growthValuesForVaccineMeasured,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([createresult]).then((createresult:any)=>{   
+    
         if (createresult?.length > 0) {
           activeChild.measures = createresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
         }
         navigation.goBack();
+      });
       } else {
         const growthValues = {
           uuid: existingMeasure.uuid,
@@ -483,16 +482,17 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([createresult]).then((createresult:any)=>{   
+    
+   
         if (createresult?.length > 0) {
           activeChild.measures = createresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
         }
         navigation.goBack();
+      });
       }
 
     } else {
@@ -517,16 +517,16 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([createresult]).then((createresult:any)=>{   
+    
         if (createresult?.length > 0) {
           activeChild.measures = createresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
         }
         navigation.goBack();
+      });
 
       } else {
 
@@ -548,17 +548,17 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
         );
+        await Promise.all([createresult]).then((createresult:any)=>{   
+    
         if (createresult?.length > 0) {
           activeChild.measures = createresult;
-          Promise.all(activeChild.measures).then(() => {
-            console.log('The combined length of both pages is', activeChild.measures );
-          });
           dispatch(setActiveChildData(activeChild));
           const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
           analytics().logEvent(GROWTH_MEASUREMENT_ADDED, { age_id: activeChild?.taxonomyData?.id, measured_at: measurePlace == 0 ? 'doctor' : 'home' })
         }
         navigation.goBack();
+      });
       }
     }
   };
