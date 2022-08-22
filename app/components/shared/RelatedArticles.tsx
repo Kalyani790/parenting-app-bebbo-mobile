@@ -77,7 +77,7 @@ const RelatedArticles = (props: RelatedArticlesProps) => {
           } else {
             relatedData = articleData.filter((x: any) => JSON.parse(JSON.stringify(related_articles)).includes(x.id));
           }
-          relartlength = relatedData.length;
+          relartlength = relatedData.length+0;
            if (relartlength < maxRelatedArticleSize && fromScreen != "ChildgrowthTab") {
             const catartlength = maxRelatedArticleSize - relartlength;
             const filteredArtData = articleData.filter((x: any) => {
