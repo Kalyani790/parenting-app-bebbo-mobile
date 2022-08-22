@@ -28,6 +28,7 @@
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "require-atomic-updates":"off",
     "react-native/sort-styles": [
       "error",
       "asc",
