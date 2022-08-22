@@ -303,40 +303,36 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: "",
           measurementPlace: existingMeasure.measurementPlace,
         };
-        const updateresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
+        userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([updateresult]).then((updateresult:any)=>{
-          if (updateresult?.length > 0) {
-            activeChild.measures = updateresult;
-            dispatch(setActiveChildData(activeChild));
-            const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
-            dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
-            setModalVisible(false);
-          }
-        })
-       
+        ).then((updateresult:any)=>{
+        if (updateresult?.length > 0) {
+          activeChild.measures = updateresult;
+          dispatch(setActiveChildData(activeChild));
+          const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
+          dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
+          setModalVisible(false);
+        }
         navigation.goBack();
+        });
 
       } else {
         // delete measure
         //delete measure obj
-        const deleteresult = await userRealmCommon.deleteChildMeasures<ChildEntity>(
+        userRealmCommon.deleteChildMeasures<ChildEntity>(
           ChildEntitySchema,
           existingMeasure,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([deleteresult]).then((deleteresult:any)=>{   
+        ).then((deleteresult:any)=>{
         if (deleteresult) {
           activeChild.measures = deleteresult;
           dispatch(setActiveChildData(activeChild));
           setModalVisible(false);
         }
         navigation.goBack();
-      })
-       
+      });
       }
     } else {
       const existingMeasure = getMeasuresForDate(DateTime.fromJSDate(new Date(measureDate?.toMillis())), activeChild)
@@ -357,13 +353,11 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: "",
           measurementPlace: existingMeasure.measurementPlace,
         };
-        const updateresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
+        userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([updateresult]).then((updateresult:any)=>{   
-     
+        ).then((updateresult:any)=>{
         if (updateresult?.length > 0) {
           activeChild.measures = updateresult;
           dispatch(setActiveChildData(activeChild));
@@ -372,17 +366,16 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           setModalVisible(false);
         }
         navigation.goBack();
-      });
+        });
+
       } else {
         // delete measure
         //delete measure obj
-        const deleteresult = await userRealmCommon.deleteChildMeasures<ChildEntity>(
+        userRealmCommon.deleteChildMeasures<ChildEntity>(
           ChildEntitySchema,
           existingMeasure,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([deleteresult]).then((deleteresult:any)=>{   
-    
+        ).then((deleteresult:any)=>{
         if (deleteresult) {
           activeChild.measures = deleteresult;
           dispatch(setActiveChildData(activeChild));
@@ -422,13 +415,11 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
-        const updateresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
+        userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([updateresult]).then((updateresult:any)=>{   
-    
+        ).then((updateresult:any)=>{
         if (updateresult?.length > 0) {
           activeChild.measures = updateresult;
           dispatch(setActiveChildData(activeChild));
@@ -449,13 +440,11 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: existingMeasure.doctorComment,
           measurementPlace: existingMeasure.measurementPlace,
         };
-        const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
+       userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValuesForVaccineMeasured,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([createresult]).then((createresult:any)=>{   
-    
+        ).then((createresult:any)=>{
         if (createresult?.length > 0) {
           activeChild.measures = createresult;
           dispatch(setActiveChildData(activeChild));
@@ -463,7 +452,7 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
         }
         navigation.goBack();
-      });
+       });
       } else {
         const growthValues = {
           uuid: existingMeasure.uuid,
@@ -477,14 +466,11 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
-        const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
+        userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([createresult]).then((createresult:any)=>{   
-    
-   
+        ).then((createresult:any)=>{
         if (createresult?.length > 0) {
           activeChild.measures = createresult;
           dispatch(setActiveChildData(activeChild));
@@ -492,7 +478,7 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
         }
         navigation.goBack();
-      });
+        });
       }
 
     } else {
@@ -512,13 +498,11 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
-        const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
+        userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([createresult]).then((createresult:any)=>{   
-    
+        ).then((createresult:any)=>{
         if (createresult?.length > 0) {
           activeChild.measures = createresult;
           dispatch(setActiveChildData(activeChild));
@@ -543,22 +527,21 @@ const AddNewChildgrowth = ({ route, navigation }: any) => {
           doctorComment: remarkTxt,
           measurementPlace: measurePlace,
         };
-        const createresult = await userRealmCommon.updateChildMeasures<ChildEntity>(
+        userRealmCommon.updateChildMeasures<ChildEntity>(
           ChildEntitySchema,
           growthValues,
           'uuid ="' + activeChild.uuid + '"',
-        );
-        await Promise.all([createresult]).then((createresult:any)=>{   
-    
-        if (createresult?.length > 0) {
-          activeChild.measures = createresult;
-          dispatch(setActiveChildData(activeChild));
-          const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
-          dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
-          analytics().logEvent(GROWTH_MEASUREMENT_ADDED, { age_id: activeChild?.taxonomyData?.id, measured_at: measurePlace == 0 ? 'doctor' : 'home' })
-        }
-        navigation.goBack();
-      });
+        ).then((createresult:any)=>{
+          if (createresult?.length > 0) {
+            activeChild.measures = createresult;
+            dispatch(setActiveChildData(activeChild));
+            const localnotiFlagObj = { generateFlag: true,generateType: 'add',childuuid: activeChild.uuid};
+            dispatch(setAllLocalNotificationGenerateType(localnotiFlagObj));
+            analytics().logEvent(GROWTH_MEASUREMENT_ADDED, { age_id: activeChild?.taxonomyData?.id, measured_at: measurePlace == 0 ? 'doctor' : 'home' })
+          }
+          navigation.goBack();
+        });
+        
       }
     }
   };
