@@ -28,6 +28,7 @@
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "require-atomic-updates":"off",
     "react-native/sort-styles": [
       "error",
       "asc",
@@ -36,14 +37,5 @@
          "ignoreStyleProperties": false
        }
      ]
-  },
-  "overrides": [
-    {
-      // enable the rule specifically for TypeScript files
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": ["error"]
-      }
-    }
-  ]
+  }
 }
